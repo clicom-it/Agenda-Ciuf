@@ -1,8 +1,0 @@
-1. Aggiungere campo sesso in anagrafica Dipendente
-2. Aggiungere ore settimana per ogni riga storico retribuzione
-3. Creazione Sync dipendenti
-4. Creazione Polling piattaforma corsi
-5. Integrazione codice con Mr.Age
-6. Rimuovere il flag al completamento dei dati personali
-7. Inserimento corsista su piattaforma corsi dopo inserimento nuovo dipendente su Mr.Age
-Totale: 16h
