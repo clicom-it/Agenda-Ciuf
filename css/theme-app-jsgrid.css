@@ -1,0 +1,217 @@
+/* =========================
+   JSGrid - APP THEME OVERRIDES
+   (carica dopo jsgrid.css e jsgrid-theme.css)
+   ========================= */
+
+/* Token (se li hai già nel tuo theme, puoi rimuovere questo blocco) */
+:root{
+  --bg: #f3f0ef;
+  --card: #f6f3f6;
+  --surface: #ffffff;
+  --text: #1f1f1f;
+  --muted: #6b6b6b;
+
+  --accent: #c8b7a6;     /* beige/tortora */
+  --accent-2: #b7a696;
+
+  --border: rgba(0,0,0,.07);
+  --border-2: rgba(0,0,0,.05);
+
+  --r-lg: 18px;
+  --r-md: 12px;
+
+  --shadow-soft: 0 10px 25px rgba(0,0,0,.06);
+}
+
+/* Contenitore: aspetto "card" */
+.jsgrid{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden; /* qui ha senso: contiene header/body */
+  color: var(--text);
+  width: 100% !important;
+}
+
+/* Evita che jsGrid erediti font giganteschi dal body su desktop,
+   ma resta leggibile e compatto per molte colonne */
+.jsgrid, .jsgrid *{
+  /*font-family: inherit;*/
+}
+
+/* Dimensioni testo tabella: compatte */
+.jsgrid{
+  font-size: 13px;  /* base */
+}
+
+.jsgrid .jsgrid-table{
+  width: 100%;
+  table-layout: fixed; /* già presente, utile per tante colonne */
+/*  padding-right: 18px;  compensazione scrollbar */
+  box-sizing: border-box;
+}
+
+.jsgrid .jsgrid-header-cell,
+.jsgrid .jsgrid-cell{
+  padding: 10px 10px;     /* più “app-like” */
+  border-color: var(--border-2);
+  line-height: 1.25;
+}
+
+/* Header: soft */
+.jsgrid .jsgrid-grid-header{
+  background: rgba(255,255,255,.55);
+  border-bottom: 1px solid var(--border);
+}
+
+.jsgrid .jsgrid-header-row > .jsgrid-header-cell{
+  background: transparent; /* sovrascrive il grigio fisso */
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 12px;         /* header leggermente più piccolo */
+  letter-spacing: .2px;
+}
+
+/* Righe: alternate molto leggere */
+.jsgrid .jsgrid-row > .jsgrid-cell{
+  background: rgba(255,255,255,.75);
+}
+
+.jsgrid .jsgrid-alt-row > .jsgrid-cell{
+  background: rgba(255,255,255,.55);
+}
+
+/* Hover riga: delicato */
+.jsgrid .jsgrid-grid-body .jsgrid-row:hover > .jsgrid-cell,
+.jsgrid .jsgrid-grid-body .jsgrid-alt-row:hover > .jsgrid-cell{
+  background: rgba(200,183,166,.14);
+}
+
+/* Selezione riga: beige (invece del blu) */
+.jsgrid .jsgrid-selected-row > .jsgrid-cell{
+  background: rgba(200,183,166,.22);
+  border-color: rgba(200,183,166,.30);
+}
+
+/* Ordinamento: elimina l’azzurro, usa beige */
+.jsgrid .jsgrid-header-row .jsgrid-header-sort{
+  background: rgba(200,183,166,.18);
+}
+
+/* Frecce sort: dal verde (#009a67) al beige */
+.jsgrid .jsgrid-header-sort-asc:before{
+  border-color: transparent transparent var(--accent) transparent;
+}
+.jsgrid .jsgrid-header-sort-desc:before{
+  border-color: var(--accent) transparent transparent transparent;
+}
+
+/* Filtri / edit / insert: coerenti e compatti */
+.jsgrid .jsgrid-filter-row input:not(.jsgrid-button),
+.jsgrid .jsgrid-filter-row select,
+.jsgrid .jsgrid-insert-row input,
+.jsgrid .jsgrid-insert-row select,
+.jsgrid .jsgrid-edit-row input:not(.jsgrid-button),
+.jsgrid .jsgrid-edit-row select{
+  height: 34px;
+  font-size: 13px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.8);
+}
+
+.jsgrid input:focus,
+.jsgrid select:focus,
+.jsgrid textarea:focus{
+  outline: none;
+  border-color: rgba(200,183,166,.85);
+  box-shadow: 0 0 0 4px rgba(200,183,166,.22);
+}
+
+/* Pager: pill beige */
+.jsgrid .jsgrid-pager{
+  padding: 10px 12px;
+  background: rgba(255,255,255,.45);
+  border-top: 1px solid var(--border);
+}
+
+.jsgrid .jsgrid-pager-page,
+.jsgrid .jsgrid-pager-nav-button{
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.8);
+  color: var(--text);
+  padding: 6px 10px;
+  margin-right: 6px;
+  display: inline-block;
+}
+
+.jsgrid .jsgrid-pager-current-page{
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* Bottoni azione (icone): lascia le sprite ma rendi “tap-friendly” */
+.jsgrid .jsgrid-button{
+  opacity: .85;
+  border-radius: 10px;
+  padding: 6px;
+  background-color: transparent !important;
+}
+
+.jsgrid .jsgrid-button:hover{
+  opacity: 1;
+  background-color: rgba(200,183,166,.18);
+}
+
+/* Loading: anello beige (invece del verde) */
+.jsgrid .jsgrid-load-panel{
+  border-radius: var(--r-md);
+  border-color: var(--border);
+  background: rgba(255,255,255,.95);
+}
+
+.jsgrid .jsgrid-load-panel:before{
+  border-color: var(--accent);
+  border-right-color: transparent;
+}
+
+/* Scrollbar: più “pulita” (solo webkit) */
+.jsgrid .jsgrid-grid-body::-webkit-scrollbar{
+  height: 10px;
+  width: 10px;
+}
+.jsgrid .jsgrid-grid-body::-webkit-scrollbar-track{
+  background: rgba(0,0,0,.04);
+  border-radius: 999px;
+}
+.jsgrid .jsgrid-grid-body::-webkit-scrollbar-thumb{
+  background: rgba(200,183,166,.55);
+  border-radius: 999px;
+}
+.jsgrid .jsgrid-grid-body::-webkit-scrollbar-thumb:hover{
+  background: rgba(200,183,166,.75);
+}
+
+
+/* =========================
+   RESPONSIVE: tante colonne
+   ========================= */
+
+/* Su schermi piccoli: riduci font e padding per far respirare le colonne */
+@media (max-width: 900px){
+  .jsgrid{ font-size: 12px; }
+  .jsgrid .jsgrid-header-row > .jsgrid-header-cell{ font-size: 11px; }
+  .jsgrid .jsgrid-header-cell,
+  .jsgrid .jsgrid-cell{ padding: 8px 8px; }
+}
+
+/* Su schermi molto piccoli: ancora più compatto */
+@media (max-width: 520px){
+  .jsgrid{ font-size: 11px; }
+  .jsgrid .jsgrid-header-row > .jsgrid-header-cell{ font-size: 10px; }
+  .jsgrid .jsgrid-header-cell,
+  .jsgrid .jsgrid-cell{ padding: 7px 6px; }
+}

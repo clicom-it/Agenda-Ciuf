@@ -1,0 +1,116 @@
+/* smartphone verticale gestito col default */
+@media screen and (min-width: 320px) {
+
+}
+/* smartphone orizzontale */
+@media screen and (min-width: 480px) {
+
+}
+/* tablet verticale */
+@media screen and (min-width: 768px) {
+
+}
+
+/* tablet orizzontale e schermi 1024x768 */
+@media screen and (min-width: 1024px) {
+    .nomeacc { width: 15%; text-align: right; }
+    .nomesart { width: 29%; text-align: right; }
+    .box_accessori { width: 49%; }
+    .box_sartoria { width: 49%; }
+    .float_primibox {
+        width: 49%;
+    }
+    .content {
+        width: 100%;
+        padding: 20px 50px;
+    }
+
+    .float_moduli_50 {
+        /*float: left;*/
+        width: calc(50% - 10px);
+        /*margin-right: 10px;*/
+    }
+
+    .float_moduli_50_50 {
+        /*float: left;*/
+        width: calc(50% - 50px);
+        /*margin-right: 10px;*/
+    }
+
+    .float_moduli_35 {
+        /*float: left;*/
+        width: calc(35% - 50px);
+        /*margin-right: 10px;*/
+    }
+
+    .float_moduli_40 {
+        float: left;
+        width: calc(40% - 50px);
+        margin-right: 10px;
+    }
+
+    .float_moduli_45 {
+        /*float: left;*/
+        width: calc(45% - 50px);
+        /*margin-right: 10px;*/
+    }
+
+    .float_moduli {
+        /*float: left;*/
+        width: calc(33% - 10px);
+        /*margin-right: 10px;*/
+    }
+
+    .float_moduli_small {
+        /*float: left;*/
+        width: calc(20% - 10px);
+        /*margin-right: 10px;*/
+    }
+
+    .float_moduli_small_25 {
+        /*float: left;*/
+        width: calc(25% - 12px);
+        /*margin-right: 10px;*/
+    }
+
+    .float_moduli_small_10 {
+        float: left;
+        width: calc(10% - 10px);
+        margin-right: 10px;
+    }
+
+    .float_moduli_small_15 {
+        /*float: left;*/
+        width: calc(15% - 10px);
+        /*margin-right: 10px;*/
+    }
+
+    .float_moduli_small_5 {
+        /*float: left;*/
+        width: calc(5% - 10px);
+        /*margin-right: 10px;*/
+    }
+    .graficostatistiche {
+        width: 50%;
+    
+    }
+    .valoreprofit {
+        width: 10%;
+    }
+}
+/* schermi moderni grandi */
+@media screen and (min-width: 1200px) {
+}
+@media screen and (min-width: 1280px) {
+    #contaperture {
+        position: absolute;
+        right: 20px;
+        top: 220px;
+    }
+    #contaddetti {
+        position: absolute;
+        right: 20px;
+        top: 290px;
+    }
+
+}

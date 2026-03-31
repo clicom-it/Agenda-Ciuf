@@ -1,0 +1,169 @@
+/* =========================
+   APP THEME OVERRIDES
+   ========================= */
+
+:root{
+  --bg: #f3f0ef;
+  --surface: #f7f4f6;
+  --card: #f6f3f6;
+  --text: #1f1f1f;
+  --muted: #6b6b6b;
+
+  --accent: #c8b7a6;      /* beige/tortora */
+  --accent-2: #b7a696;
+
+  --border: rgba(0,0,0,.06);
+
+  --r-lg: 22px;
+  --r-md: 14px;
+
+  --shadow: 0 10px 25px rgba(0,0,0,.06);
+  --shadow-soft: 0 6px 18px rgba(0,0,0,.05);
+}
+
+html, body{
+  height: 100%;
+}
+
+body{
+  font-family: "PT Sans", sans-serif, Arial, Helvetica, Tahoma, Verdana;
+  font-size: 16px;                 /* da 11px -> leggibilità mobile */
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* NON limitare tutti i div: rompe dropdown/tooltip/icone */
+div{
+  /*overflow: visible;*/
+  text-overflow: clip;
+}
+
+/* applichi ellissi solo alle righe/tabellari che lo richiedono */
+.customRow, .valoreprofit, .file_cnt{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.statprofit {width: 50%;font-size: 14px;}
+.valoreprofit {width: 15%;font-size: 14px;}
+
+.content{
+  /*width: min(1100px, 92%);*/
+  padding: 0px 10px 90px; /* spazio per bottom nav */
+}
+
+.showcont, .showcont-form{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 18px;
+  margin-top: 20px;
+}
+
+.barra_submenu{
+  background: transparent;
+  border: 0;
+  padding: 20px 10px;
+}
+
+.top_black{
+  background: var(--bg);
+  border-bottom: 0;
+  height: auto;
+  padding: 18px 16px 8px;
+}
+
+.utente{
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  font-weight: 700;
+  float: none;
+  text-align: center;
+  line-height: normal;
+}
+
+.logout{
+  float: none;
+  text-align: center;
+  margin: 5px 0 0;
+  line-height: 100% !important;
+  height: 35px;
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+.logout a{
+  color: var(--muted);
+}
+
+.submit_login,
+.submit_cerca,
+.submit_form,
+.bottone a,
+.caricafile a,
+.button-esporta{
+  background: var(--accent) !important;
+  border: 0 !important;
+  color: #fff !important;
+  border-radius: 999px !important;  /* pill */
+  padding: 10px 14px;
+  height: auto;
+  box-shadow: none;
+  font-size: 18px;
+}
+
+.submit_login:hover,
+.submit_cerca:hover,
+.submit_form:hover,
+.bottone a:hover,
+.caricafile a:hover,
+.button-esporta:hover{
+  background: var(--accent-2) !important;
+}
+
+.input_moduli,
+.input_login,
+.input_cerca,
+.textarea_moduli,
+.textarea_moduli_small,
+select{
+  background: rgba(255,255,255,.75);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  height: 44px;
+  padding: 10px 12px;
+  font-size: 16px;
+}
+
+textarea.textarea_moduli,
+textarea.textarea_moduli_small{
+  height: auto;
+  min-height: 120px;
+}
+
+input:focus, textarea:focus, select:focus{
+  outline: none;
+  border-color: rgba(200,183,166,.9);
+  box-shadow: 0 0 0 4px rgba(200,183,166,.25);
+}
+.banda_ico {height: 100px;}
+.linguette_mod {height: 80px;}
+.linguetta {
+    border-radius: 30px 30px 0 0;
+    width: calc(12% - 5px);
+}
+.linguetta i {margin-bottom: 10px;}
+.box_submenu a {border-radius: 999px !important;border:1px solid silver;padding: 5px 10px;display: block;margin-bottom: 10px;}
+.box_submenu a:hover {background-color: #ffffff !important;}
+#formstep2cal .input_moduli {
+    height:inherit;
+}
+.imgsx {width: auto;}
+.caricafile a {width: auto;}
+.box_submenu {padding: 0 4px;}
+.barra_op {height: auto;min-height: 40px;border-radius: 999px;padding-left: 20px;}
+#btn-esporta {background-color: green !important;}
+.bottone_chiudi {height: 40px;}
+.bottone_chiudi a {border-radius: 999px;}

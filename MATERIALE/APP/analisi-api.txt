@@ -1,0 +1,102 @@
+Per tutti i servizi
+Richiesta: formato json da passare in POST
+Risposta :formato json
+
+Pagina Login e Pagina Home
+endpoint https://api.comeinunafavola.it/v1/login
+Login accesso con credenziali email e password,restituisce un token di accesso che dovrà essere usato per le operazioni successive(da valutare se nell'header o come parametro).
+Restituisce anche i dati relativi al profilo, dati anagrafici, status, num. appuntamenti di oggi, atelier gestiti. Tutti i dati necessari per andare ad impostare la home.
+Durata del token: la concordiamo insieme, ad ogni utilizzo c'è il reset della scadenza. 
+
+Pagina Appuntamenti
+endpoint https://api.comeinunafavola.it/v1/calendar
+Richiesta
+json con token, iduser(che arriva dalla login),data, idatelier
+Risposta
+Elenco appuntamenti della data passata, con data/ora, info cliente, tipo(sposa, sposo, sposa e sposo, cerimonia)
+
+Pagina dettaglio appuntamento
+endpoint https://api.comeinunafavola.it/v1/calendar/{idappuntamento}/
+Richiesta
+json con token, idappuntamento
+Risposta
+Info dettaglio appuntamento come da schermata, al momento non sono previsiti allegati
+
+Pulsante Inizia appuntamento
+Quando premuto dobbiamo decidere come gestire i messaggi per l'operatore, un'opzione potrebbe essere un servizio che invia la lista completa dei messaggi, con l'intervallo 
+in minuti per quando mostrarli tramite notifica push. Però si accettano suggerimenti in base alla vostra esperienza.
+
+Pulsante Termina appuntamento
+Pagina dettaglio appuntamento
+endpoint https://api.comeinunafavola.it/v1/calendar/{idappuntamento}/end
+Richiesta
+json con token, idappuntamento, dati relativi all'appuntamento
+Risposta
+Esito dell'operazione
+
+Pagina statistiche
+endpoint https://api.comeinunafavola.it/v1/stats/
+Richiesta
+json con token, idnegozio, data dal, data al
+Risposta
+Dati di statistica come da schermata
+
+Pagina Team
+endpoint https://api.comeinunafavola.it/v1/team/
+Richiesta
+json con token, iduser
+Risposta
+Lista utenti in formazione con lo status raggiunto
+
+Dettaglio utente team
+endpoint https://api.comeinunafavola.it/v1/team/{iduserTeam}/
+Richiesta
+json con token, iduserTeam
+Risposta
+Dati di anagrafica, lista moduli/lezioni per l'utente
+
+Questionario lezione
+endpoint https://api.comeinunafavola.it/v1/modules/education/{idlezione}/test
+Richiesta
+json con token, idlezione, iduserTeam
+Risposta
+Dati questionario relativo alla lezione selezionata
+
+Pulsante questionario Invia (utente in formazione)
+endpoint https://api.comeinunafavola.it/v1/modules/education/{idlezione}/submit
+Richiesta
+json con token, idlezione, iduserTeam, lista risposte
+Risposta
+risultato del test
+
+Pulsante questionario Approva/Rifiuta (utente formatore)
+endpoint https://api.comeinunafavola.it/v1/modules/education/{idlezione}/approve
+Richiesta
+json con token, idlezione, iduserTeam, esito(approva/rifiuta) 
+Risposta
+conferma dell'esito
+
+Pagina Education
+endpoint https://api.comeinunafavola.it/v1/modules
+Richiesta
+json con token, iduser
+Risposta
+Elenco dei moduli per l'utente con le info relative
+
+Pagina Education
+endpoint https://api.comeinunafavola.it/v1/modules/{idmodulo}
+Richiesta
+json con token, iduser, idmodulo
+Risposta
+Lista delle lezioni e dati relativi
+
+Dettaglio lezione
+endpoint https://api.comeinunafavola.it/v1/modules/education/{idlezione}/
+Richiesta
+json con token, idlezione, iduserTeam
+Risposta
+Dettaglio lezione con testo, video e allagati(se presenti)
+
+Pagina Profilo
+Da definire la parte Documenti
+

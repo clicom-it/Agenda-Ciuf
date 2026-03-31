@@ -1,0 +1,56 @@
+DIMHProduct -> tabella prodotti
+Id -> id record
+Description1 -> nome abito
+BasePrice -> prezzo abito
+NatDesc -> categoria abito: Abiti da sposa, Abiti da uomo, Accessori, Abiti da cerimonia
+StartValidity -> data record
+
+DIMHStaff -> tabella personale negozi
+Id -> id record
+UserLogin -> nome e cognome
+
+FTHWAREHOUSEPROG -> 
+Company -> nome negozio
+IdDIMHProduct -> id tabella DIMHProduct
+Shippingdate -> data movimento
+IdStaff -> Id operatore?
+SalesAmount -> importo di vendita
+SalesQty -> qta venduta
+
+select Id, Description1, NatDesc from PassepartoutRetail.dbo.DIMHProduct d where d.NatDesc in ('Abiti da sposa','Abiti da uomo','Abiti da cerimonia');
+
+Query abiti
+select c.Company,d3.Description1,  c.SalesAmount, c.SalesQty, d.UserLogin  
+from PassepartoutRetail.dbo.FTHWarehouseProg c inner join PassepartoutRetail.dbo.DIMHStaff d on c.IdStaff=d.Id
+inner JOIN (select * from PassepartoutRetail.dbo.DIMHProduct d2 where d2.NatDesc in ('Abiti da sposa','Abiti da uomo','Abiti da cerimonia')) d3 on d3.Id=c.IdDIMHProduct 
+where c.SalesQty > 0;
+
+select c.Company,d3.Description1,  c.SalesAmount, c.SalesQty, d.UserLogin, c.IdStaff , c.Shippingdate  
+from PassepartoutRetail.dbo.FTHWarehouseProg c inner join PassepartoutRetail.dbo.DIMHStaff d on c.IdStaff=d.Id
+inner JOIN (select * from PassepartoutRetail.dbo.DIMHProduct d2 where d2.NatDesc in ('Abiti da sposa','Abiti da uomo','Abiti da cerimonia')) d3 on d3.Id=c.IdDIMHProduct 
+where c.SalesQty > 0 and YEAR(c.ShippingDate)=2024 and MONTH(c.ShippingDate)=10 and c.IdStaff=161;
+
+select c.Company,d3.Description1,  c.SalesAmount, c.SalesQty, d.UserLogin, c.IdStaff , c.Shippingdate  
+from PassepartoutRetail.dbo.FTHWarehouseProg c inner join PassepartoutRetail.dbo.DIMHStaff d on c.IdStaff=d.Id
+inner JOIN (select * from PassepartoutRetail.dbo.DIMHProduct d2 where d2.NatDesc in ('Abiti da sposa','Abiti da uomo','Abiti da cerimonia')) d3 on d3.Id=c.IdDIMHProduct 
+where YEAR(c.ShippingDate)=2024 and MONTH(c.ShippingDate)=10 and c.Company ='milano';
+
+select SUM(c.SalesAmount) as tot_amount, SUM(c.SalesQty) as tot_qta, d.UserLogin  
+from PassepartoutRetail.dbo.FTHWarehouseProg c inner join PassepartoutRetail.dbo.DIMHStaff d on c.IdStaff=d.Id
+inner JOIN (select * from PassepartoutRetail.dbo.DIMHProduct d2 where d2.NatDesc in ('Abiti da sposa','Abiti da uomo','Abiti da cerimonia')) d3 on d3.Id=c.IdDIMHProduct 
+where c.SalesQty > 0 and YEAR(c.ShippingDate)=2024 and MONTH(c.ShippingDate)=10 and c.Company ='livorno' 
+group by d.UserLogin;
+
+select c.Company,d3.Description1,  c.SalesAmount, c.SalesQty, d.UserLogin, c.IdStaff , c.Shippingdate  
+from PassepartoutRetail.dbo.FTHWarehouseProg c inner join PassepartoutRetail.dbo.DIMHStaff d on c.IdStaff=d.Id
+inner JOIN (select * from PassepartoutRetail.dbo.DIMHProduct d2 where d2.NatDesc='Accessori') d3 on d3.Id=c.IdDIMHProduct 
+where c.SalesQty > 0 and YEAR(c.ShippingDate)=2024 and MONTH(c.ShippingDate)=10 and c.IdStaff=161;
+
+select SUM(c.SalesAmount) as tot_amount, SUM(c.SalesQty) as tot_qta, d.UserLogin,CAST(c.ShippingDate as Date) as ShippingDate from PassepartoutRetail.dbo.FTHWarehouseProg c inner join PassepartoutRetail.dbo.DIMHStaff d on c.IdStaff=d.Id inner JOIN (select * from PassepartoutRetail.dbo.DIMHProduct d2 where d2.NatDesc in ('Abiti da sposa','Abiti da uomo','Abiti da cerimonia','Accessori')) d3 on d3.Id=c.IdDIMHProduct where c.SalesQty > 0 AND c.ShippingDate >= CONVERT(datetime2, '2025-10-01', 23) and c.ShippingDate < DATEADD(day, 1, CONVERT(datetime2, '2025-10-23', 23)) and c.Company = 'Bari' group by d.UserLogin, CAST(c.ShippingDate AS DATE);
+
+SELECT s.store_code, COALESCE(r.reviews_count,0) AS reviews_count, COALESCE(k.dresses_sold,0) AS pieces_sold, CASE WHEN COALESCE(k.dresses_sold,0) = 0 THEN NULL ELSE COALESCE(r.reviews_count,0) / NULLIF(COALESCE(k.dresses_sold,0),0) END AS ratio FROM operator_daily_kpis k JOIN (SELECT DISTINCT id as store_code FROM utenti where livello='5' and attivo=1) s ON s.store_code = k.store_code LEFT JOIN operator_daily_kpis r ON r.store_code = k.store_code AND r.year = k.year AND r.month = k.month WHERE k.kpi_date >= '2025-10-01' AND k.kpi_date < '2025-10-31' UNION SELECT r.store_code, COALESCE(r.reviews_count,0) AS reviews_count, 0 AS pieces_sold, NULL AS ratio FROM store_monthly_reviews r LEFT JOIN operator_daily_kpis k ON k.store_code = r.store_code AND k.year = r.year AND k.month = r.month WHERE k.kpi_date >= '2025-10-01' AND k.kpi_date < '2025-10-31' AND k.store_code IS NULL ORDER BY ratio DESC, ratio DESC, reviews_count DESC 
+
+select SUM(c.SalesAmount) as tot_amount  
+from PassepartoutRetail.dbo.FTHWarehouseProg c inner join PassepartoutRetail.dbo.DIMHStaff d on c.IdStaff=d.Id
+inner JOIN (select * from PassepartoutRetail.dbo.DIMHProduct d2 where d2.Code not in ('IACCONTO2','AS')) d3 on d3.Id=c.IdDIMHProduct 
+where YEAR(c.ShippingDate)=2025 and MONTH(c.ShippingDate)=10 and d.UserLogin = 'Valeria Veronchi' and c.Company = 'torinovillage' group by d.UserLogin;

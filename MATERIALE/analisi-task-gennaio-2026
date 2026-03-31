@@ -1,0 +1,52 @@
+1. Notifiche push su app
+Costo: 150 euro + iva
+Rilascio: 1 gg lav. da conferma
+
+2. Mail inizio mese spiegazione gare
+Costo: 0, compreso nel precedente preventivo
+Rilascio: 1 gg lav. da conferma
+
+3. Indicizzazione AI sito
+Implementazioni: inserimento contenuti semantici inerenti al mondo sposa, come articoli del blog e pagina di Q&A
+Costo: 500 euro + iva una tantum, da valutare un'attività mensile di inserimento 4 articoli del blog al costo di 200 euro + iva / mese
+Rilascio: 3 gg lav. da conferma
+
+4. Sicurezza sul lavoro Corsi
+In attesa di call con Pietro e referente
+
+5. Foglio Costi Indici
+Implementazione: importazione in Mr. Age foglio costi da Google Sheet su nuove tabelle in db
+Costo: 700 euro + iva
+Rilascio: 2 gg lav. da conferma
+Da valutare insieme l'implementazione di un agente chatGPT che possa fare una serie di analisi dei dati di vendita e i costi, 
+dobbiamo fornire a chatGPT una lista di 20-30 richieste per istruire l'agente. 
+
+6. Richiesta assunzione
+Implementazione: 
+- Form di richiesta assunzione con campi da voi forniti
+- Creazione utente in anagrafica
+- E-mail all'utente con accesso Applicazione per inserimento dati
+- Utente inserisce i dati, invio e-mail di notifica nuova richiesta di assunzione al consulente, accesso a Mr.Age da Consulente
+- Il consulente genera il contratto con i suoi sistemi e lo carica su Mr. Age con accesso da Consulente
+- L'utente lo può vedere su area riservata, da valutare l'inserimento di un servizio di firma con OTP
+- Aggiornamento sezione Retribuzioni in scheda utente su Mr. Age
+Costo: 3100 + iva
+Rilascio: 10gg lav. da conferma
+
+7. Caricamento cedolini
+Implementazione: funzione di upload cedolini dipendenti con selezione utente per omonimi, elaborazione del pdf con estrazione dati utili per Mr. Age, 
+invio mail notifica all'utente e caricamento cedolino in area riservata
+Costo: 1200 euro + iva
+Rilascio: 3gg lav. da conferma
+
+8. css restyle Mr. Age
+Costo: 350 euro + iva
+Rilascio: 1 gg lav. da conferma
+
+9. Configuratore sartoria
+In attesa di più informazioni per formulare una stima
+
+10. Saldi e acconti
+Implementazione: importazione dati di acconti e saldo su Mr. Age da Analytics, gestione dei dati su scheda Appuntamento
+Costo: 1200 euro + iva
+Rilascio: 3gg lav. da conferma
